@@ -1,8 +1,64 @@
 .home1{
-
+    color: white;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 5em;
+    text-shadow: 3px 3px 0px black;
+    padding-bottom: 1em;
 }
 
 .welcome1{
-
+    color: white;
+    text-shadow: 3px 3px 0px black;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 3em;
+    padding-bottom: 0.5em;
 }
 
+.p1{
+    color: white;
+    text-shadow: 3px 3px 0px black;
+    font-size: xx-large;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    padding-bottom: 2em;
+}
+
+.p2{
+    color: white;
+    text-shadow: 3px 3px 0px black;
+    font-size: xx-large;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+form{
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    text-shadow: 2px 0px 0px rgb(255, 255, 255);
+    font-family: "Courier New", Courier, monospace;
+}
+
+.form-control-color{
+    background-color: rgb(147, 147, 147);
+    cursor: text;
+}
+
+
+.submit1{
+    color: white;
+    background-color: black;
+}
+
+.signup1{
+    color: rgb(0, 0, 0);
+    font-size: 4.5em;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.navbar{
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+}

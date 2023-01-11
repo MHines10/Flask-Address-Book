@@ -4,29 +4,29 @@
 
 {% block content %}
 
-<form action="" class="form1 bg-white rounded mt-3 p-5" method="post">
-    <h1 class="text-center">Sign Up</h1>
+<form action="" class="form1 rounded mt-3 p-5" style="background-image: url('static/oldpaper.jpg'); background-size: cover;" method="post">
+    <h1 class="signup1 text-center">Sign Up</h1>
     {{ form.csrf_token }}
     
     {{ form.first_name.label }}
-    {{ form.first_name(class='form-control', placeholder='Enter Your First Name') }}
+    {{ form.first_name(class='form-control form-control-color w-25', style='cursor: text;', placeholder='Enter Your First Name') }}
 
     {{ form.last_name.label }}
-    {{ form.last_name(class='form-control', placeholder='Enter Your Last Name') }}
+    {{ form.last_name(class='form-control form-control-color w-25', style='cursor: text;', placeholder='Enter Your Last Name') }}
 
     {{ form.email.label }}
-    {{ form.email(class='form-control', placeholder='Enter Email') }}
+    {{ form.email(class='form-control form-control-color w-50', style='cursor: text;', placeholder='Enter Email') }}
 
     {{ form.username.label }}
-    {{ form.username(class='form-control', placeholder='Enter Username') }}
+    {{ form.username(class='form-control form-control-color w-50', style='cursor: text;', placeholder='Enter Username') }}
 
     {{ form.password.label }}
-    {{ form.password(class='form-control', placeholder='Enter Password') }}
+    {{ form.password(class='form-control form-control-color w-50', style='cursor: text;', placeholder='Enter Password') }}
 
     {{ form.confirm_pass.label }}
-    {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
+    {{ form.confirm_pass(class='form-control form-control-color w-50', style='cursor: text;', placeholder='Confirm Password') }}
 
-    {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+    {{ form.submit(class='submit1 btn btn-danger w-50 mt-3') }}
 </form>
 
 {% endblock %}

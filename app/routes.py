@@ -15,10 +15,12 @@ def signup():
     if form.validate_on_submit():
         print('Form Submitted and Validated!')
         # Get data from the form
+        first_name = form.first_name.data
+        last_name = form.last_name.data
         email = form.email.data
         username = form.username.data
         password = form.password.data
-        print(email, username, password)
+        print(first_name, last_name, email, username, password)
         # TODO: Check to see if there is a User with username and/or email
         if username == 'monti':
             flash('That user already exists', 'danger')
@@ -26,8 +28,12 @@ def signup():
         # TODO: Create a new User with form data and add to database
 
         # Flash a success message
-        flash('Thank you for signing up!', 'success')
+        flash('Thank you {} {} for signing up!'.format(first_name, last_name), 'success')
         # Redirect back to Home
         return redirect(url_for('index'))
 
     return render_template('signup.html', form=form)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
