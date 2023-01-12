@@ -11,6 +11,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    address = db.relationship('Address', backref='Author', lazy='dynamic')
+    posts = db.relationship('Post', backref='Author', lazy='dynamic')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -45,4 +47,21 @@ class Address(db.Model):
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+    
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    body = db.Column(db.String, nullable=False)
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f"<Post {self.id} | {self.title}>"
 
