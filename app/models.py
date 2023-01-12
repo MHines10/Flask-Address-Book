@@ -1,8 +1,9 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import db
+from flask_login import UserMixin
+from app import db, login
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
     last_name = db.Column(db.String(25), nullable=False)
@@ -36,4 +37,9 @@ class Address(db.Model):
 
     def __repr__(self):
         return f"<Address {self.id} | {self.address}>"
+
+# User Login Manage
+@login.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
