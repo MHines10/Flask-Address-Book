@@ -22,5 +22,10 @@ migrate = Migrate(app, db)
 # Create an Instance of Login Manager to set up login fucntionality
 login = LoginManager(app)
 
+#set login view to redirect unauth users
+login.login_view = 'login'
+login.login_message = 'Must be logged in to access this page'
+login.login_message_category = 'Danger'
+
 # import all of the routes and models from the routes/models file into the current folder
 from . import routes, models
