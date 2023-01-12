@@ -21,6 +21,9 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"<User {self.id} | {self.username}>"
 
+    def check_password(self, guess_password):
+        return check_password_hash(self.password, guess_password)
+
 class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(25), nullable=False)
