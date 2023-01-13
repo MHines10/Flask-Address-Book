@@ -1,20 +1,23 @@
 from app import app
 from flask import render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
-from app.forms import SignUpForm, LoginForm, PostForm
-from app.models import User, Post
+from app.forms import SignUpForm, LoginForm, PostForm, AddressForm
+from app.models import User, Post, Address
 
+# Welcome
 @app.route('/')
 def index():
+    # address = Address.query.all()
+    # return redirect(url_for('index'))
     return render_template('index.html')
     
-
+# Sign Up
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     # Create an instance of the SignUpForm
     form = SignUpForm()
 
-    # Check if a POST request AND data is valid
+    # Check if a SIGNUP request AND data is valid
     if form.validate_on_submit():
         print('Form Submitted and Validated!')
 
@@ -46,6 +49,7 @@ def signup():
 
     return render_template('signup.html', form=form)
 
+#Login
 @app.route('/login', methods=["GET", "POST"])
 def login():
     form = LoginForm()
@@ -63,34 +67,74 @@ def login():
 
             #log user in
             login_user(user)
-            flash(f"{user.username} is logged in", "success")
-            return redirect(url_for('index'))
+            flash(f"{user.username} logged in", "success")
+            return redirect(url_for('address'))
         else:
             flash("Incorrect user and/or password", "danger")
+            return redirect(url_for('login'))
 
 
     return render_template('login.html', form=form)
 
+# Logout
 @app.route('/logout')
 def logout():
     logout_user()
-    flash("You have logged out successfully", "success")
+    flash("Logged Out", "success")
     return redirect(url_for('index'))
 
-
-@app.route('/create-post', methods = ['GET', 'POST'])
+# New Note
+@app.route('/create-note', methods = ['GET', 'POST'])
 @login_required
-def create_post():
+def create_note():
     form = PostForm()
     if form.validate_on_submit():
         print('Form Validated!')
+
         # Get the data
         title = form.title.data
         body = form.body.data
         print(title, body, current_user)
-        # Create a new instance for post
+
+        # Create a new instance for note
         new_post = Post(title=title, body=body, user_id=current_user.id)
-        flash(f"Post Create", 'success')
+        flash(f"{new_post.title} Note Created", 'success')
+        return redirect(url_for('notes'))
+
+    return render_template('addnotes.html', form=form)
+
+# New Address/Contacts
+@app.route('/create-contact', methods = ['GET', 'POST'])
+@login_required
+def create_contact():
+    form = AddressForm()
+    if form.validate_on_submit():
+        print('Form Validated!')
+
+        # Get the data from form
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        phone = form.phone.data
+        address = form.address.data
+        print(first_name, last_name, phone, address, current_user)
+
+        # Create a new instance for note
+        new_contact = Address(first_name=first_name, last_name=last_name, phone=phone, address=address)
+        flash(f"Contact Added", 'success')
         return redirect(url_for('index'))
 
-    return render_template('create.html', form=form)
+    return render_template('newaddress.html', form=form)
+
+# Existing Notes
+@app.route('/notes')
+@login_required
+def notes():
+    notes = Post.query.all()
+    return render_template('notes.html', notes=notes)
+
+# Existing Address/Contacts
+@app.route('/address')
+@login_required
+def address():
+    address = Address.query.all()
+    return render_template('addressbook.html', address=address)

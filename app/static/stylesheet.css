@@ -62,3 +62,44 @@ form{
     font-family: "Courier New", Courier, monospace;
     font-size: large;
 }
+
+.cont{
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+.cont1{
+    color: rgb(237, 237, 237);
+    text-shadow: 1px 1px 0px black;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    background-color: rgba(184, 46, 11, 0.479);
+}
+
+.list-group{
+    align-items: center;
+}
+
+.crd1{
+    background-color: rgba(220, 20, 60, 0.708);
+}
+
+.ct1{
+    color: gold;
+    text-shadow: 1px 1px 0px black;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+.cb1{
+    color: rgb(237, 237, 237);
+    text-shadow: 1px 1px 0px black;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;  
+}
+
+.cb2{
+    color: rgba(255, 170, 1, 0.856);
+    text-shadow: 0px 0px 0px rgb(255, 255, 255);
+    font-family: "Courier New", Courier, monospace; 
+}

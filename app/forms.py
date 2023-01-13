@@ -19,5 +19,12 @@ class LoginForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[InputRequired()])
-    body = PasswordField('Body', validators=[InputRequired()])
+    body = StringField('Body', validators=[InputRequired()])
+    submit = SubmitField()
+
+class AddressForm(FlaskForm):
+    first_name = StringField('First Name', validators=[InputRequired()])
+    last_name = StringField('Last Name', validators=[InputRequired()])
+    phone = StringField('Phone #', validators=[InputRequired()])
+    address = StringField('Address', validators=[InputRequired()])
     submit = SubmitField()

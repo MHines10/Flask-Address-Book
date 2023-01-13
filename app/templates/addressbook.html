@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Address Book {% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1 class="home1 text-center mt-5">Welcome, {{ current_user.first_name.title() }}</h1>
+    <h4 class="p1 text-center mt-5">Your Contacts</h4>
+    {% for addy in address %}
+    <ul class="list-group">
+        <li class="cont list-group-item active w-50" style="background-image: url('static/blackstone.jpg');">{{ addy.first_name }} {{ addy.last_name }}</li>
+        <li class="cont1 list-group-item w-50">{{ addy.phone }}</li>
+        <li class="cont1 list-group-item w-50">{{ addy.address }}</li>
+        <li class="cont1 list-group-item w-50"><cite title="Source Title">{{ addy.date_created.strftime('%A, %B %d, %Y. %I:%M%p') }}</cite></li>
+    </ul>
+    {% endfor %}
+{% endif %}
+{% endblock %}

@@ -11,8 +11,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    address = db.relationship('Address', backref='Author', lazy='dynamic')
-    posts = db.relationship('Post', backref='Author', lazy='dynamic')
+    # address = db.relationship('Address', backref='author', lazy='dynamic')
+    notes = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -33,7 +33,7 @@ class Address(db.Model):
     phone = db.Column(db.String(25), nullable=True)
     address = db.Column(db.String(50), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -41,7 +41,7 @@ class Address(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f"<Address {self.id} | {self.address}>"
+        return f"<Address {self.id} | {self.first_name}>"
 
 # User Login Manage
 @login.user_loader

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Notes {% endblock %}
+
+{% block content %}
+
+<h4 class="home1 text-center mt-5">Your Notes</h4>
+
+{% for note in notes%}
+<div class="crd1 card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{url_for('static', filename='note.png')}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="ct1 card-title">{{ note.title }}</h4>
+        <p class="cb1 card-text">{{ note.body }}</p>
+        <p class="cb2 card-text"><small><cite title="Source Title">{{ note.date_created.strftime('%A, %B %d, %Y. %I:%M%p') }}</cite></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

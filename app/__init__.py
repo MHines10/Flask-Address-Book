@@ -25,7 +25,7 @@ login = LoginManager(app)
 #set login view to redirect unauth users
 login.login_view = 'login'
 login.login_message = 'Must be logged in to access this page'
-login.login_message_category = 'Danger'
+login.login_message_category = 'danger'
 
 # import all of the routes and models from the routes/models file into the current folder
 from . import routes, models
