@@ -121,7 +121,7 @@ def create_contact():
         # Create a new instance for note
         new_contact = Address(first_name=first_name, last_name=last_name, phone=phone, address=address)
         flash(f"Contact Added", 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('address'))
 
     return render_template('newaddress.html', form=form)
 
