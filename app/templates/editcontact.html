@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Contact {% endblock %}
+
+{% block content %}
+
+<form action="" class="rounded mt-3 p-5" style="background-image: url('static/oldpaper.jpg'); background-size: cover;" method="post">
+    <h1 class="signup1 text-center">Edit Contact</h1>
+    {{ form.csrf_token }}
+    
+    {{ form.first_name.label }}
+    {{ form.first_name(class='form-control form-control-color w-25', style='cursor: text;', value=addy.first_name) }}
+
+    {{ form.last_name.label }}
+    {{ form.last_name(class='form-control form-control-color w-25', style='cursor: text;', value=addy.last_name) }}
+
+    {{ form.phone.label }}
+    {{ form.phone(class='form-control form-control-color w-25', style='cursor: text;', value=addy.phone) }}
+
+    {{ form.address.label }}
+    {{ form.address(class='form-control form-control-color w-50', style='cursor: text;', value=addy.address) }}
+
+    {{ form.submit(class='submit1 btn btn-danger w-50 mt-3') }}
+</form>
+
+{% endblock %}

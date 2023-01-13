@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<h4 class="home1 text-center mt-5">Your Notes</h4>
+<h4 class="home1 text-center mt-5">{{ current_user.first_name.title() }}'s Notes</h4>
 
 {% for note in notes%}
-<div class="crd1 card mb-3" style="max-width: 540px;">
+<div class="crd1 card mb-3" style="max-width: 50vmax;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{{url_for('static', filename='note.png')}}" class="img-fluid rounded-start" alt="...">
@@ -17,6 +17,29 @@
         <h4 class="ct1 card-title">{{ note.title }}</h4>
         <p class="cb1 card-text">{{ note.body }}</p>
         <p class="cb2 card-text"><small><cite title="Source Title">{{ note.date_created.strftime('%A, %B %d, %Y. %I:%M%p') }}</cite></small></p>
+        <a href="{{ url_for('edit_post', post_id=note.id) }}" class="edbtn btn btn-success">Edit</a>
+        <button type="button" class="delbtn btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal-{{note.id}}">
+          Remove Note
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal-{{note.id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="deleteModalLabel">Deleting "{{ note.title }}"?</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  Are you SURE you want to remove {{ note.title }}? There's no going back if you do!
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hmm...Maybe Later</button>
+                      <a href="{{ url_for('delete_post', post_id=note.id) }}" class="btn btn-danger">Destroy It!</a>
+                  </div>
+              </div>
+          </div>
+      </div>
       </div>
     </div>
   </div>
