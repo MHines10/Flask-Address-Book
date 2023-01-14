@@ -129,14 +129,20 @@ def create_contact():
 @app.route('/notes')
 @login_required
 def notes():
-    notes = Post.query.all()
+    if current_user.is_authenticated:
+        notes = current_user.notes.all()
+    else:
+        notes = []
     return render_template('notes.html', notes=notes)
 
 # Existing Address/Contacts
 @app.route('/address')
 @login_required
 def address():
-    address = Address.query.all()
+    if current_user.is_authenticated:
+        address = current_user.address.all()
+    else:
+        address = []
     return render_template('addressbook.html', address=address)
 
 # Note ID

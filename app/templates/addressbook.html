@@ -4,33 +4,33 @@
 
 {% block content %}
 {% if current_user.is_authenticated %}
-    <h1 class="home1 text-center mt-3">Hello, {{ current_user.first_name.title() }}</h1>
-    <h4 class="p1 text-center">Your Contacts</h4>
+    <h1 class="home1 text-center mt-3">{{ current_user.first_name.title() }}'s Contacts</h1>
+    <!-- <h4 class="p1 text-center">Your Contacts</h4> -->
     {% for addy in address %}
     <ul class="list-group mb-3">
         <li class="cont list-group-item active w-50" style="background-image: url('static/blackstone.jpg');">{{ addy.first_name }} {{ addy.last_name }}</li>
         <li class="cont1 list-group-item w-50">{{ addy.phone }}</li>
         <li class="cont1 list-group-item w-50">{{ addy.address }}</li>
         <li class="cont1 list-group-item w-50"><cite title="Source Title">{{ addy.date_created.strftime('%A, %B %d, %Y. %I:%M%p') }}</cite></li>
-        <li class="cont1 list-group-item w-50"><a href="{{ url_for('edit_contact', address_id=addy.id) }}" class="edbtn btn btn-success">Update</a>
-            <button type="button" class="delbtn btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal-{{addy.id}}">
+        <li class="cont1 list-group-item w-50"><a href="{{ url_for('edit_contact', address_id=addy.id) }}" class="edbtn cont btn btn-success btn-sm">Update</a>
+            <button type="button" class="delbtn cont2 btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{addy.id}}">
               Remove Contact
           </button>
           
           <!-- Modal -->
-          <div class="modal fade" id="deleteModal-{{addy.id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
+          <div class="modal fade" id="deleteModal-{{addy.id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.495);">
+              <div class="modal-dialog bg-dark">
+                  <div class="modal-content" style="background-color: rgb(129, 84, 0);">
                       <div class="modal-header">
                           <h1 class="modal-title fs-5" id="deleteModalLabel">Removing "{{ addy.first_name }}"?</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body " style="background-color: rgb(22, 22, 22);">
                       Are you SURE you want to remove {{ addy.first_name }} from your contacts? This is permanent.
                       </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">They can Stay</button>
-                          <a href="{{ url_for('delete_contact', address_id=addy.id) }}" class="btn btn-danger">Remove {{ addy.first_name }}</a>
+                      <div class="modal-footer" style="background-color: rgb(22, 22, 22);">
+                          <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">They can Stay</button>
+                          <a href="{{ url_for('delete_contact', address_id=addy.id) }}" class="btn btn-outline-danger">Remove {{ addy.first_name }}</a>
                       </div>
                   </div>
               </div>

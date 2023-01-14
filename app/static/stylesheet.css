@@ -68,6 +68,27 @@ form{
     font-weight: bold;
 }
 
+.cont2{
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+.cont:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 3px rgb(21, 255, 0);
+    background-color: rgb(4, 71, 0);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+.cont2:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px rgb(242, 255, 0);
+    background-color: rgb(59, 48, 0);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
 .cont1{
     color: rgb(237, 237, 237);
     text-shadow: 1px 1px 0px black;

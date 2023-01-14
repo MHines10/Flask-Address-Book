@@ -1,25 +1,60 @@
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="background-image: url('static/blackstone.jpg');">
+{% if current_user.is_authenticated %}
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-image: url('static/note2.png');">
+  <div class="offcanvas-header">
+    <h1 class="home1 offcanvas-title" id="offcanvasWithBothOptionsLabel">{{ current_user.first_name.upper() }}</h1>
+    <hr>
+    <button type="button" class="btn-close btn-warning" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a class="p1" href="{{url_for('address')}}">Address Book</a>
+    <br>
+    <a class="p1" href="{{url_for('notes')}}">Notes</a>
+    <br>
+    <br>
+    <a class="p1" href="{{url_for('create_contact')}}">New Contact</a>
+    <br>
+    <a class="p1" href="{{url_for('create_note')}}">Add a Note</a>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <a class="p1" href="{{url_for('logout')}}">Log Out</a>
+    {% endif %}
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark" style="background-image: url('static/blackstone.jpg');">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Your Address Book</a>
+        <a class="navbar-brand" href="{{url_for('index')}}">Your Address Book</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        </button>
+    </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            {% if current_user.is_authenticated %}
-            <a class="nav-link" href="{{url_for('address')}}">Address Book</a>
-            <a class="nav-link" href="{{url_for('create_contact')}}">Add New Contact</a>
-            <a class="nav-link" href="{{url_for('notes')}}">Notes</a>
-            <a class="nav-link" href="{{url_for('create_note')}}">Add Note</a>
-            <a class="nav-link" href="{{url_for('logout')}}">Log out</a>
-            {% else %}
+            <div class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                <a class="nav-link" href="{{url_for('address')}}">Address Book</a>
+                <!-- <a class="nav-link" href="{{url_for('create_contact')}}">Add New Contact</a> -->
+                <a class="nav-link" href="{{url_for('notes')}}">Notes</a>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Create
+                </a>
+                <ul class="dropdown-menu" style="background-color: rgb(96, 0, 0);">
+                    <li><a class="dropdown-item" href="{{url_for('create_contact')}}">New Contact</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('create_note')}}">New Note</a></li>
+                </ul>
+                </li>
+                <!-- <a class="nav-link" href="{{url_for('create_note')}}">Add Note</a>
+                <a class="nav-link" href="{{url_for('logout')}}">Log out</a> -->
+                <button class="btn btn-outline-light btn-lg position-absolute top-05 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">{{current_user.first_name.upper()}}</button>
+
+                {% else %}
             <a class="nav-link" href="{{url_for('index')}}">Welcome</a>
             <a class="nav-link" href="{{url_for('address')}}">Address Book</a>
             <a class="nav-link" href="{{url_for('notes')}}">Notes</a>
             <a class="nav-link" href="{{url_for('login')}}">Log In</a>
             <a class="nav-link" href="{{url_for('signup')}}">Sign Up</a>
-            {% endif %}
-        </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </nav>
