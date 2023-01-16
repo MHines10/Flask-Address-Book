@@ -42,10 +42,10 @@ def signup():
         new_user = User(first_name = first_name, last_name = last_name, email = email, username = username, password = password)
 
         # Flash a success message
-        flash('Thank you {} {} for signing up!'.format(first_name, last_name), 'success')
+        flash('Thank you {} {} for signing up! Login in to get started!'.format(first_name.title(), last_name.title()), 'success')
         
         # Redirect back to Home
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))
 
     return render_template('signup.html', form=form)
 
@@ -68,7 +68,7 @@ def login():
             #log user in
             login_user(user)
             flash(f"{user.username} logged in", "success")
-            return redirect(url_for('address'))
+            return redirect(url_for('index'))
         else:
             flash("Incorrect user and/or password", "danger")
             return redirect(url_for('login'))
