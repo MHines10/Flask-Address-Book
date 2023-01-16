@@ -124,3 +124,67 @@ form{
     text-shadow: 0px 0px 0px rgb(255, 255, 255);
     font-family: "Courier New", Courier, monospace; 
 }
+
+.search1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search {
+    color: rgb(237, 237, 237);
+    text-shadow: 1px 1px 0px black;
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid rgba(154, 0, 0, 0.468);
+    border-radius: 10px;
+    background-color: rgba(74, 74, 74, 0.418);
+    cursor: text;
+  }
+
+  .magbtn{
+    color: white;
+  }
+
+.search2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search22 {
+    color: rgb(252, 249, 249);
+    text-shadow: 1px 1px 0px rgb(11, 11, 11);
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid silver;
+    border-radius: 10px;
+    background-color: rgba(125, 65, 0, 0.333);
+    cursor: text;
+  }
+
+  .magbtn2{
+    color: white;
+  }
+
+  .sidebar1{
+    color: white;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    text-shadow: 3px 3px 0px black;
+  }
+
+  .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+  }
+
+.idximg {
+    width: 400px;
+    height: 300px;
+    border-radius: 20px;
+  }
+  
+  

@@ -3,9 +3,18 @@
 {% block title %} Welcome {% endblock %}
 
 {% block content %}
+    <!-- login welcome Page -->
     {% if current_user.is_authenticated %}
     <h1 class="home1 text-center mt-3">Your Address Book</h1>
     <h1 class="welcome1 text-center">Welcome, {{ current_user.first_name.title() }}</h1>
+    <div class="container1">
+      <a class="imghover" href="{{url_for('address')}}"><img class="idximg" src="{{url_for('static', filename='ab.png')}}" alt="Image 1"></a>
+      <a href="{{url_for('notes')}}"><img class="idximg" src="{{url_for('static', filename='notesbg.png')}}" alt="Image 2"></a>
+    </div>
+    
+      <!-- <img src="{{url_for('static', filename='ab.png')}}" class="card-img p-3" alt="..." style="max-height: 25vmax; max-width: 25vmax;">
+      <img src="{{url_for('static', filename='notesbg.png')}}" class="card-img" alt="..." style="max-height: 25vmax;"> -->
+    <!-- default welcome page when a user is not signed in -->
     {% else %}
     <h1 class="home1 text-center mt-5">Your Address Book</h1>
     <h1 class="welcome1 text-center">Welcome</h1>

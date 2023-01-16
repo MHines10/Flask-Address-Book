@@ -4,8 +4,14 @@
 
 {% block content %}
 {% if current_user.is_authenticated %}
+    <!-- Address Book Page -->
     <h1 class="home1 text-center mt-3">{{ current_user.first_name.title() }}'s Contacts</h1>
-    <!-- <h4 class="p1 text-center">Your Contacts</h4> -->
+    <!-- search feature for addressbook -->
+    <form class="search1">
+        <input type="text" class="search" placeholder="Search Contacts">
+        <button type="submit" class="btn magbtn btn-lg"><i class="fas fa-search"></i></button>
+      </form>
+      
     {% for addy in address %}
     <ul class="list-group mb-3">
         <li class="cont list-group-item active w-50" style="background-image: url('static/blackstone.jpg');">{{ addy.first_name }} {{ addy.last_name }}</li>
@@ -17,7 +23,7 @@
               Remove Contact
           </button>
           
-          <!-- Modal -->
+          <!-- Modal for Deleting Contact -->
           <div class="modal fade" id="deleteModal-{{addy.id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.495);">
               <div class="modal-dialog bg-dark">
                   <div class="modal-content" style="background-color: rgb(129, 84, 0);">

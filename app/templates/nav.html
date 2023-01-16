@@ -1,11 +1,16 @@
+<!-- Side Bar Account Page after login -->
 {% if current_user.is_authenticated %}
 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="background-image: url('static/note2.png');">
   <div class="offcanvas-header">
-    <h1 class="home1 offcanvas-title" id="offcanvasWithBothOptionsLabel">{{ current_user.first_name.upper() }}</h1>
+    <h1 class="sidebar1 offcanvas-title" id="offcanvasWithBothOptionsLabel">{{ current_user.first_name.upper() }}</h1>
     <hr>
     <button type="button" class="btn-close btn-warning" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
+    <form class="search2">
+        <input type="text" class="search22" placeholder="Search">
+        <button type="submit" class="btn magbtn2 btn-lg"><i class="fas fa-search"></i></button>
+      </form>
     <a class="p1" href="{{url_for('address')}}">Address Book</a>
     <br>
     <a class="p1" href="{{url_for('notes')}}">Notes</a>
@@ -32,7 +37,6 @@
             <div class="navbar-nav">
                 {% if current_user.is_authenticated %}
                 <a class="nav-link" href="{{url_for('address')}}">Address Book</a>
-                <!-- <a class="nav-link" href="{{url_for('create_contact')}}">Add New Contact</a> -->
                 <a class="nav-link" href="{{url_for('notes')}}">Notes</a>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,8 +47,6 @@
                     <li><a class="dropdown-item" href="{{url_for('create_note')}}">New Note</a></li>
                 </ul>
                 </li>
-                <!-- <a class="nav-link" href="{{url_for('create_note')}}">Add Note</a>
-                <a class="nav-link" href="{{url_for('logout')}}">Log out</a> -->
                 <button class="btn btn-outline-light btn-lg position-absolute top-05 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">{{current_user.first_name.upper()}}</button>
 
                 {% else %}
